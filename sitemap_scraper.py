@@ -143,6 +143,7 @@ def main():
         logging.info("Final object: ")
         logging.info(successful_exit(collection, topic))
         logging.info("All jobs successfuly, exiting: 0")
+        exit(0)
     except Exception as e:
         logging.error(e)
         logging.error("Can't write topics to db")

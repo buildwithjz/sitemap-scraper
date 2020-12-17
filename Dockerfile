@@ -8,4 +8,4 @@ COPY . /app
 
 WORKDIR /app
 
-ENTRYPOINT ["sh","-c","python3 sitemap-scraper.py"]
+ENTRYPOINT ["sh","-c","python3 sitemap_scraper.py"]
