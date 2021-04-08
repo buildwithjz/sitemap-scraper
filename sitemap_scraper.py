@@ -7,6 +7,7 @@ import logging
 import time
 import datetime
 import os
+import sys
 
 def get_existing_sitemaps():
   sitemaps = []
@@ -43,7 +44,7 @@ def graceful_exit(collection, topic):
     flag = {"$set": {"currently_updating": False}}
     collection.update(query, flag)
 
-    exit(0)
+    sys.exit(0)
 
 def successful_exit(collection, topic):
     query = {"topic": topic}
@@ -142,8 +143,9 @@ def main():
         write_topic_to_db(topic, search_domain, stripped_domain)
         logging.info("Final object: ")
         logging.info(successful_exit(collection, topic))
+        time.sleep(1)
         logging.info("All jobs successfuly, exiting: 0")
-        exit(0)
+        sys.exit(0)
     except Exception as e:
         logging.error(e)
         logging.error("Can't write topics to db")
